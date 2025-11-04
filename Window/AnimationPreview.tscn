@@ -1,0 +1,110 @@
+[gd_scene load_steps=2 format=3 uid="uid://d2q4cfx888v4b"]
+
+[ext_resource type="Script" uid="uid://bi1upinxqwrch" path="res://addons/spriteAnimationPreviewer/Window/animation_preview_win.gd" id="1_246gu"]
+
+[node name="Window" type="Window" node_paths=PackedStringArray("folder_button", "folder_label", "include_children_folder", "anim_list", "sprite", "index_label", "prev_button", "next_button")]
+oversampling_override = 1.0
+title = "SpriteFrames 预览器"
+position = Vector2i(0, 36)
+size = Vector2i(600, 500)
+min_size = Vector2i(400, 300)
+script = ExtResource("1_246gu")
+folder_button = NodePath("CenterContainer2/VBoxContainer/HBoxContainer/FolderSelecter")
+folder_label = NodePath("CenterContainer3/FolderName")
+include_children_folder = NodePath("CenterContainer2/VBoxContainer/HBoxContainer/CheckBox")
+anim_list = NodePath("CenterContainer2/VBoxContainer/HBoxContainer2/AnimationList")
+sprite = NodePath("CenterContainer/Panel/AnimatedSprite2D")
+index_label = NodePath("CenterContainer2/VBoxContainer/HBoxContainer2/IndexLabel")
+prev_button = NodePath("CenterContainer2/VBoxContainer/HBoxContainer3/pre")
+next_button = NodePath("CenterContainer2/VBoxContainer/HBoxContainer3/next")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Panel" type="Panel" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CenterContainer/Panel"]
+
+[node name="CenterContainer2" type="CenterContainer" parent="."]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -281.0
+offset_top = -126.0
+offset_right = -2.0
+offset_bottom = -33.0
+grow_horizontal = 0
+grow_vertical = 0
+size_flags_horizontal = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer2"]
+layout_direction = 2
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer2/VBoxContainer"]
+layout_mode = 2
+
+[node name="CheckBox" type="CheckBox" parent="CenterContainer2/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "InclideChildren"
+
+[node name="FolderSelecter" type="Button" parent="CenterContainer2/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "SelectFileFolder"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="CenterContainer2/VBoxContainer"]
+layout_mode = 2
+
+[node name="IndexLabel" type="Label" parent="CenterContainer2/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="AnimationList" type="OptionButton" parent="CenterContainer2/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="CenterContainer2/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="pre" type="Button" parent="CenterContainer2/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "<-"
+
+[node name="next" type="Button" parent="CenterContainer2/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "->"
+
+[node name="CenterContainer3" type="CenterContainer" parent="."]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -40.0
+offset_right = 40.0
+grow_vertical = 0
+
+[node name="FolderName" type="Label" parent="CenterContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+
+[connection signal="close_requested" from="." to="." method="_on_close_requested"]

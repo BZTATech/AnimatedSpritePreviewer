@@ -1,0 +1,62 @@
+[gd_scene load_steps=2 format=3 uid="uid://bxn3jooc4xlpq"]
+
+[ext_resource type="Script" uid="uid://n8uixahwe1rb" path="res://addons/spriteAnimationPreviewer/Inspector/inspector_peviewer_ctrl.gd" id="1_wjmqn"]
+
+[node name="PreviewCtrl" type="VBoxContainer" node_paths=PackedStringArray("sprite", "anim_list", "animation_name_label", "lastBtn", "playBtn", "nextBtn")]
+offset_left = 2.0
+offset_right = 293.0
+offset_bottom = 301.0
+size_flags_horizontal = 3
+size_flags_vertical = 6
+script = ExtResource("1_wjmqn")
+sprite = NodePath("CenterContainer/Panel/AnimatedSprite2D")
+anim_list = NodePath("VBoxContainer2/HBoxContainer2/AnimationList")
+animation_name_label = NodePath("VBoxContainer2/HBoxContainer2/AnimationName")
+lastBtn = NodePath("VBoxContainer2/HBoxContainer3/last")
+playBtn = NodePath("VBoxContainer2/HBoxContainer3/play")
+nextBtn = NodePath("VBoxContainer2/HBoxContainer3/next")
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="."]
+layout_mode = 2
+alignment = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer2"]
+layout_mode = 2
+
+[node name="AnimationName" type="Label" parent="VBoxContainer2/HBoxContainer2"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="AnimationList" type="OptionButton" parent="VBoxContainer2/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="last" type="Button" parent="VBoxContainer2/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "<-"
+
+[node name="play" type="Button" parent="VBoxContainer2/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "play"
+
+[node name="next" type="Button" parent="VBoxContainer2/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "->"
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+custom_minimum_size = Vector2(4.615, 175.98)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Panel" type="Panel" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CenterContainer/Panel"]
