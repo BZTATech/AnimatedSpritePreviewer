@@ -26,7 +26,7 @@ var current_index := -1
 
 func _ready():
 	# 设置窗口属性
-	title = "SpriteFrames 预览器"
+	title = "SpriteFrames Previewer"
 	size = Vector2i(600, 500)
 	min_size = Vector2i(400, 300)
 
@@ -70,22 +70,22 @@ func _load_sprite_frames(path):
 	prev_button.disabled = true
 	next_button.disabled = true
 	anim_list.clear()
-	anim_list.add_item("选择动画...", 0)
+	anim_list.add_item("SelectAnimation...", 0)
 	anim_list.select(0)
 	sprite.sprite_frames = null
 
 	if not DirAccess.dir_exists_absolute(path):
-		print_debug("目录不存在: ", path)
+		print_debug("Folder Not Exist: ", path)
 		return
 
 	var include_subfolders = include_children_folder.button_pressed
 
-	print("开始加载 SpriteFrames: ", path, " | 包含子目录: ", include_subfolders)
+	print("Loading SpriteFrames: ", path, " | include Children Folders: ", include_subfolders)
 
 	# 递归查找所有 SpriteFrames
 	_find_sprite_frames_in_dir(path, include_subfolders)
 
-	print("找到 ", sprite_frames_list.size(), " 个 SpriteFrames 资源")
+	print("Find ", sprite_frames_list.size(), " SpriteFrames Resources")
 
 	if sprite_frames_list.size() > 0:
 		# 按路径排序
@@ -99,13 +99,13 @@ func _load_sprite_frames(path):
 		prev_button.disabled = false
 		next_button.disabled = false
 	else:
-		print("未找到 .tres 文件")
+		print("No SpriteFrames Resources Found")
 
 # 递归查找目录中的 SpriteFrames 资源
 func _find_sprite_frames_in_dir(path: String, include_subfolders: bool):
 	var dir = DirAccess.open(path)
 	if dir == null:
-		print_debug("无法打开目录: ", path)
+		print_debug("Can't Open Folder: ", path)
 		return
 
 	# 扫描当前目录
@@ -123,7 +123,6 @@ func _find_sprite_frames_in_dir(path: String, include_subfolders: bool):
 					"path": file_path,
 					"resource": resource
 				})
-				print("找到 SpriteFrames: ", file_path)
 			# 如果是目录且设置了包含子目录
 		elif dir.current_is_dir() and file_name != "." and file_name != ".." and include_subfolders:
 			var sub_dir = path.path_join(file_name)
@@ -180,7 +179,7 @@ func _apply_sprite_frame():
 	else:
 		# 如果没有动画，清空列表
 		anim_list.clear()
-		anim_list.add_item("资源加载失败", 0)
+		anim_list.add_item("loading failed", 0)
 
 func _prev_sprite_frame():
 	if sprite_frames_list.size() == 0:
@@ -216,11 +215,10 @@ func _input(event):
 				get_viewport().set_input_as_handled()
 
 func _exit_tree() -> void:
-	print("退出树")
+	pass
 
 func show_previewer():
 	popup()
 
 func _on_close_requested() -> void:
-	print("关闭预览器Window")
 	hide()

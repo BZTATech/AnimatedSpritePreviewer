@@ -28,8 +28,6 @@ func _enter_tree():
 	### 绑定 Inspector 插件
 	# 创建 SpriteFrames 预览器插件
 	######################
-
-	
 	var inspectorPath = script_dir + "/Inspector/sprite_inspector_plugin.gd"
 	sprite_frames_inspector = load(inspectorPath).new()
 	
@@ -54,6 +52,5 @@ func _get_plugin_name():
 	
 	
 func _on_close_requested():
-	print("关闭预览器")
 	previewerWin.hide()
 	
