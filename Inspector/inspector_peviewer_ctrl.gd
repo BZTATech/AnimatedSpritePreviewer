@@ -47,7 +47,7 @@ func _update_animation_list():
 			_on_animation_selected(0)
 			_setPlayBtnState(true)
 		else:
-			anim_list.add_item("无可用动画", 0)
+			anim_list.add_item("No Animations", 0)
 			anim_list.disabled = true
 			_setPlayBtnState(false)
 

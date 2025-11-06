@@ -18,7 +18,7 @@ func _enter_tree():
 	get_editor_interface().get_base_control().add_child(previewerWin)
 
 	# 添加工具栏按钮
-	add_tool_menu_item("SpriteFrames previewer", _open_previewer)
+	add_tool_menu_item("AnimatedSprite previewer", _open_previewer)
 
 	previewerWin.close_requested.connect(_on_close_requested)
 	# 隐藏预览器直到需要显示
